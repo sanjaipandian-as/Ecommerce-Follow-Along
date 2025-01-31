@@ -5,7 +5,7 @@ const connection=require("./db/connection")
 
 app.get("/testing",async(req,res)=>{
      
-    res.send("hello")
+    res.send("hello.....")
 })
 
 app.listen(port,async ()=>{
