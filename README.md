@@ -58,7 +58,7 @@ These tasks were explained by my mentor during the backend files overview.
 
 + Linked the pages in the Navbar.
 
-+ For the Login page:
+# For the Login page:
 
 + Added a "show password" feature with an eye icon for toggling password visibility.
 
