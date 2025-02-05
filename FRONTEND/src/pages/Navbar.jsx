@@ -1,12 +1,10 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { IoHome } from "react-icons/io5";
 import { TbLogin2 } from "react-icons/tb";
 
-
 function Navbar() {
   return (
-    <ul className="fixed top-0 right-[200px] p-4">
+    <ul className="absolute top-0 right-[200px] p-4">
       <li className="inline-block mr-4 mt-10">
         <Link
           to="/"

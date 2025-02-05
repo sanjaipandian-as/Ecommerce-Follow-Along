@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
 import { IoMdEyeOff, IoMdEye } from "react-icons/io";
+import { useState } from "react";
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -12,6 +12,18 @@ function Login() {
     <div className="max-w-md mx-auto p-5 border rounded-md mt-40">
       <h2 className="text-2xl font-semibold mb-4">Login to your account</h2>
       <form>
+
+        <div className="mb-4">
+          <label htmlFor="name" className="block mb-2">Name</label>
+          <input 
+            type="text"
+            id="Name"
+            className="w-full p-2 border rounded"
+            required
+          />
+        </div>
+
+        
         <div className="mb-4">
           <label htmlFor="email" className="block mb-2">Email address</label>
           <input
@@ -58,7 +70,7 @@ function Login() {
         </button>
       </form>
       <p className="mt-4">
-        Don't have an account? <a href="/signup" className="text-blue-500">Sign up</a>
+        Dont have an account? <a href="/signup" className="text-blue-500">Sign up</a>
       </p>
     </div>
   );
