@@ -65,4 +65,16 @@ These tasks were explained by my mentor during the backend files overview.
 # This is what I accomplished in the Follow-Along Project Milestone #2.
 
 
+# Follow-along project milestone 5 Project Overview.
+
+
+# Signup Page Project
+
+This project is a simple signup page built using **React** and **Tailwind CSS**. The aim of this assignment is to create a user-friendly and responsive signup page that can be integrated into various web applications.
+
+## Project Description
+
++ The signup page project is designed to provide a clean and efficient way for users to register for an application. 
+
++ Utilizing React for component-based architecture and Tailwind CSS for rapid styling, this project ensures a smooth user experience and modern design.
 
