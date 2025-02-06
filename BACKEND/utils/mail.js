@@ -1,5 +1,5 @@
 const nodemailer =require("nodemailer");
-const dotenv=require("dotenv");
+require("donenv").config();
 const sendMail=async(options)=>{
     const transporter=nodemailer.createTransport({
         host: "smtp.ethereal.email",
