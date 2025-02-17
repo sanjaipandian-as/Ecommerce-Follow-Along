@@ -10,7 +10,7 @@ app.use(express.json())
 const{catchAsyncError} =require("./midlleware/catchAsyncError")
 
 const {ErrorHandler} =require ("./utils/errorHandler")
-const errMiddleware =require("./middleware/error")
+const errMiddleware =require("./midlleware/error")
 
 
 

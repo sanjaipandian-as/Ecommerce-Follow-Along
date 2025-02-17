@@ -47,3 +47,28 @@ userRouter.post("/signup",catchAsyncError(async(req,res)=>{
 
      
 }))
+
+userRoute.post("./login",catchAsyncError(async(req,res,next)=>{
+
+  const {email,password}=req.body
+  if (!email || !password){
+    next(new ErrorHandler("email and password are required",400));
+  }
+
+  let user =UserModel.findOne({email})
+  if (!user){
+    next(new ErrorHandler("please signup before login ",400));
+  }
+
+  if (!user.isActivated){
+    next(new ErrorHandler("please singup before login",400));
+  }
+
+  let isMatching=await bcrypt.compare(password,user.password); 
+  if (!isMatching){
+    next(new ErrorHandler ("password is incorrect",400))
+  } 
+
+}))
+
+module.exports=userRouter;
