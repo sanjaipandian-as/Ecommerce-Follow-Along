@@ -130,3 +130,13 @@ This project is a simple signup page built using **React** and **Tailwind CSS**.
 
 + Utilizing React for component-based architecture and Tailwind CSS for rapid styling, this project ensures a smooth user experience and modern design.
 
+
+# Milestone 6 - User Signup with Secure Data Storage
+
+### Description
+In this milestone, we’ve focused on implementing the backend endpoint for the signup page. The key objective was to ensure that user data, especially passwords, are securely stored in the database. By using *bcrypt* for password hashing, we are ensuring that passwords are encrypted before storing them, following best security practices.
+
+### Features Implemented in Milestone 6:
+- *Password Encryption:* The user’s password is hashed using bcrypt before storing it in the database.
+
+- *Secure User Data Storage:* User details (name, email, etc.) are securely stored in the database, ensuring that sensitive information like passwords are never saved as plain text.
