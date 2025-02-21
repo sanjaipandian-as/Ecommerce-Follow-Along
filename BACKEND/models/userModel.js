@@ -1,7 +1,6 @@
-const moongose=require('moongose')
+const mongoose=require("mongoose")
 
-
-const addressSchema =moongose.schema({
+const addressSchema =mongoose.Schema({
    
    Country:{
         type:String,
@@ -17,7 +16,7 @@ const addressSchema =moongose.schema({
    },
    Houseno:{
     type:Number,
-     requried:true
+     required:true
    },
 
    
@@ -25,7 +24,7 @@ const addressSchema =moongose.schema({
 
 
 
-const userSchema=moongose.schema({
+const userSchema=mongoose.Schema({
     name:{
         type: String,
         required: true
@@ -58,6 +57,6 @@ const userSchema=moongose.schema({
 })
 
 
-const UserModel=moongose.model("user",userSchema)
+const UserModel=mongoose.model("user",userSchema)
 
 module.exports={UserModel}

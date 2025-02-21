@@ -1,38 +1,32 @@
 
+let express= require("express")
 
-const express= require("express")
-
-const app=express()
+const {userRoute} = require("./controllers/userRoute")
+let app=express()
 app.use(express.json())
 
+const cors= require("cors")
+
+const Errorhandle=require("./middelware/error")
 
 
-const{catchAsyncError} =require("./midlleware/catchAsyncError")
+app.use(cors ({
+    origin: 'http://localhost:5173/',
+    credentials:true,
+    allowedHeaders:["Content-Type","Authorization"]
+}))
 
-const {ErrorHandler} =require ("./utils/errorHandler")
-const errMiddleware =require("./midlleware/error")
+// app.use(cors({
+//     origin: 'http://localhost:5175', 
+//     credentials: true
+// }));
 
+app.use("/user",userRoute)
 
-
-
-
-// app.post("/create" , catchAsyncError(async(req,res,next)=>{
-         
-
-//          const {email,password}=req.body
-        
-//         if(!email || !password){
-//             next(new ErrorHandler("required",400))
-//         }
-//         else{
-//             res.status(200).json({status:"true",message:"uuuuuuuuu"})
-    
-//         }
-    
-// }))
+ 
 
 
 
-app.use(errMiddleware)
+app.use(Errorhandle)
 
 module.exports={app}
