@@ -1,32 +1,33 @@
+const express = require("express");
+const cors = require("cors");
+const app = express();
+app.use(express.json());
+const ErrorMiddleware = require("./middelware/error");
+const path = require("path");
 
-let express= require("express")
+const { userRoute } = require("./controllers/userRoute");
+const productRouter = require("./controllers/productRoutes");
 
-const {userRoute} = require("./controllers/userRoute")
-let app=express()
-app.use(express.json())
+app.use(
+  cors({
+    origin: "http://localhost:5173", // Remove trailing slash
+    credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
-const cors= require("cors")
+app.use("/test", async (req, res) => {
+  res.send("hellodude.......");
+});
 
-const Errorhandle=require("./middelware/error")
+console.log(path.join(__dirname, "uploadproducts"));
 
+app.use("/profile-photo", express.static(path.join(__dirname, "uploads")));
+app.use("/products-photo", express.static(path.join(__dirname, "uploadproducts")));
 
-// app.use(cors ({
-//     origin: 'http://localhost:5173/',
-//     credentials:true,
-//     allowedHeaders:["Content-Type","Authorization"]
-// }))
+app.use("/user", userRoute);
+app.use("/product", productRouter);
 
-// app.use(cors({
-//     origin: 'http://localhost:5175', 
-//     credentials: true
-// }));
+app.use(ErrorMiddleware);
 
-app.use("/user",userRoute)
-
- 
-
-
-
-app.use(Errorhandle)
-
-module.exports={app}
+module.exports = { app };

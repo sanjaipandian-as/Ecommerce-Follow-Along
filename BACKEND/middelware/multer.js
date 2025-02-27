@@ -1,20 +1,26 @@
+const multer = require("multer");
+const path = require("path");
 
-const { compareSync } = require("bcrypt")
-const multer=require("multer")
-let path =require("path")
-
-
+// ✅ Define User Upload Storage
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, path.join(__dirname,"../upload"))
-    },
+    destination: path.join(__dirname, "../upload"), // Directly specify the path
     filename: function (req, file, cb) {
-      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random())
-      cb(null, file.fieldname + '-' + uniqueSuffix)
+        const uniqueSuffix = Date.now() + "-" + Math.round(Math.random());
+        cb(null, file.fieldname + "-" + uniqueSuffix + path.extname(file.originalname));
     }
-  })
-  
-  const upload = multer({ storage: storage })
+});
 
+// ✅ Define Product Upload Storage
+const productStorage = multer.diskStorage({
+    destination: path.join(__dirname, "../uploadproducts"), // Directly specify the path
+    filename: function (req, file, cb) {
+        const uniqueSuffix = Date.now() + "-" + Math.round(Math.random());
+        cb(null, file.fieldname + "-" + uniqueSuffix + path.extname(file.originalname));
+    }
+});
 
-  module.exports=upload
+// ✅ Define Upload Instances
+const upload = multer({ storage: storage });
+const productUpload = multer({ storage: productStorage });
+
+module.exports = { upload, productUpload };

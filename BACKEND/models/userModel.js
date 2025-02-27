@@ -34,9 +34,9 @@ const userSchema=mongoose.Schema({
         required:true,
         unique:true
     },
-    Password:{
+    password:{
         type: String,
-        requried:true
+        required:true
     },
     role:{
         type:String,
@@ -57,6 +57,8 @@ const userSchema=mongoose.Schema({
 })
 
 
+
+
 const UserModel=mongoose.model("user",userSchema)
 
-module.exports={UserModel}
+module.exports= UserModel
