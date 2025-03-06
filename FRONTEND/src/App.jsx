@@ -1,10 +1,12 @@
 import {BrowserRouter,Routes,Route} from "react-router-dom"
 import Home from "./pages/Home";
 import Login from "./pages/login";
-// import Navbar from "./pages/NAvbar";
 import Navbar from "./pages/Navbar";
 import Signup from "./pages/Signup";
-import CreatePage from "./pages/Createpage";
+import SellerProcutPage from "./pages/SellerProductPage";
+import CreateProduct from "./componants/Createproduct";
+import Nav from "./componants/Navbar";
+
 function app() {
   return (
      <BrowserRouter>
@@ -13,7 +15,10 @@ function app() {
             <Route  path="/"  element={<Home/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="signup" element={<Signup/>}/>
-            <Route path="/Createpage" element={<CreatePage/>}/>
+            <Route path="/Create" element={<CreateProduct/>}/>
+            <Route path="/Modify" element={<SellerProcutPage/>}/>\
+            
+            
 
        </Routes>
      </BrowserRouter>
