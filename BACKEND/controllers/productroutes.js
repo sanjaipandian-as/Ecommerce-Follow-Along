@@ -70,4 +70,22 @@ productRouter.get("/allproduct", catchAsyncError(async(req, res, next)=>{
 
 }))
 
+productRouter.get("/product/:id", catchAsyncError(async (req, res, next) => {
+    const { id } = req.params;
+    
+    // Find the product by ID
+    const product = await productModel.findById(id);
+    
+    if (!product) {
+        return res.status(404).json({ status: false, message: "Product not found" });
+    }
+
+    // Process images if available
+    if (product.images?.length > 0) {
+        product.images = product.images.map((ele) => path.basename(ele));
+    }
+
+    res.status(200).json({ status: true, message: product });
+}));
+
 module.exports = productRouter;

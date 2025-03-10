@@ -1,33 +1,37 @@
-const express = require("express");
-const cors = require("cors");
+const express = require('express');
+const cors = require('cors');
+const path = require('path');
+const ErrorMiddleware = require('./middelware/error');
+
 const app = express();
+
+// Fix: Use correct middleware setup
 app.use(express.json());
-const ErrorMiddleware = require("./middelware/error");
-const path = require("path");
 
-const { userRoute } = require("./controllers/userRoute");
-const productRouter = require("./controllers/productRoutes");
+// Enable CORS
+app.use(cors({
+    origin: '*',
+    credentials: true
+}));
 
-app.use(
-  cors({
-    origin: "http://localhost:5173", // Remove trailing slash
-    credentials: true,
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
+// Import Routes
+const userRoute = require('./controllers/userRoute');
+const productRoute = require('./controllers/productRoutes');
 
-app.use("/test", async (req, res) => {
-  res.send("hellodude.......");
+// Static file serving
+app.use('/profile-photo', express.static(path.join(__dirname, 'uploads')));
+app.use('/products-photo', express.static(path.join(__dirname, 'uploadproducts')));
+
+// Test Route
+app.get("/test", (req, res) => {
+    res.send("Server is running...");
 });
 
-console.log(path.join(__dirname, "uploadproducts"));
+// Use Routes
+app.use('/user', userRoute);
+app.use('/product', productRoute);
 
-app.use("/profile-photo", express.static(path.join(__dirname, "uploads")));
-app.use("/products-photo", express.static(path.join(__dirname, "uploadproducts")));
-
-app.use("/user", userRoute);
-app.use("/product", productRouter);
-
+// Error Handling Middleware
 app.use(ErrorMiddleware);
 
 module.exports = { app };

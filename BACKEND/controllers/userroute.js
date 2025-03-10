@@ -64,7 +64,7 @@ userRoute.get("/activation/:token", catchAsyncError(async (req, res, next) => {
 }));
 
 // LOGIN ROUTE
-userRoute.post('/login', catchAsyncError(async (req, res, next) => {
+userRoute.post("/login", catchAsyncError(async (req, res, next) => {
     const { email, password } = req.body;
     if (!email || !password) {
         return next(new ErrorHandler("Email and password are required", 400));
@@ -72,29 +72,33 @@ userRoute.post('/login', catchAsyncError(async (req, res, next) => {
 
     let user = await UserModel.findOne({ email });
     if (!user) {
-        return next(new ErrorHandler("Please sign up before login", 400));
+        return next(new ErrorHandler("Please sign up first", 400));
     }
+
     if (!user.isActivated) {
-        return next(new ErrorHandler("Please activate your account before login", 400));
+        return next(new ErrorHandler("Please activate your account before logging in", 400));
     }
 
-    await bcrypt.compare(password, user.password, function(err, result) {
+    bcrypt.compare(password, user.password, function (err, result) {
         if (err) {
-            return next(new ErrorHandler("Internal server error", 400));
+            return next(new ErrorHandler("Internal server error", 500));
         }
-    });
-    if (!result) {
-        return next(new ErrorHandler("Incorrect password", 400));
-    }
-    
 
-    let token = jwt.sign({ id: user._id }, process.env.SECRET, { expiresIn: '30d' });
-    res.cookie("accesstoken", token, {
-        httpOnly: true,
-        maxAge: 30 * 24 * 60 * 60 * 1000 // 30 days
-    });
+        if (!result) {
+            return next(new ErrorHandler("Password is incorrect", 400));
+        }
 
-    res.status(200).json({ status: true, message: "Login successful" });
+        let token = jwt.sign({ id: user._id }, process.env.SECRET, {
+            expiresIn: "30d"
+        });
+
+        res.cookie("accessToken", token, {
+            httpOnly: true,
+            maxAge: 30 * 24 * 60 * 60 * 1000 // 30 days
+        });
+
+        res.status(200).json({ status: true, message: "Login successful" });
+    });
 }));
 
 // FILE UPLOAD ROUTE
@@ -105,4 +109,5 @@ userRoute.post("/upload", upload.single("photo"), catchAsyncError(async (req, re
     res.status(200).json({ status: true, message: "File uploaded successfully" });
 }));
 
-module.exports = { userRoute };
+// ✅ Export correctly (No {} destructuring)
+module.exports = userRoute;

@@ -215,3 +215,85 @@ Defined a schema for storing product details with the following fields:
 - Validates correct data types (e.g., price must be a number).  
 - Prevents duplicate entries (if necessary).  
 
+
+# 🛍️ E-Commerce Platform
+
+## 📖 Overview
+This project is a full-stack **E-Commerce Platform** built with **MongoDB, Express, React, and Node.js (MERN Stack)**. It allows users to browse, manage, and edit products dynamically.
+
+---
+
+## 🚀 Milestones
+
+### **📍 Milestone 11 - Home Page with Dynamic Products**
+✅ **Backend:**
+- Created an API endpoint to fetch all products from MongoDB.
+
+✅ **Frontend:**
+- Implemented a function to retrieve and display product data.
+- Dynamically rendered products using the existing **Product Card component**.
+
+---
+
+### **📍 Milestone 12 - My Products Page**
+✅ **Backend:**
+- Created an API endpoint to fetch products based on the user's email from MongoDB.
+
+✅ **Frontend:**
+- Implemented a function to retrieve and display filtered product data.
+- Dynamically rendered products using the existing **Product Card component**.
+
+---
+
+### **📍 Milestone 13 - Edit Uploaded Products**
+### 🎯 **Learning Goals**
+- Understand how to write an endpoint that updates existing data in MongoDB.
+- Learn how to auto-fill a form with previous product data and provide an option to edit.
+
+#### **✅ Steps to Implement**
+1️⃣ **Backend - Create an Update Endpoint**  
+   - Write an API endpoint that receives updated product data.  
+   - Modify the existing product details inside MongoDB.  
+
+2️⃣ **Frontend - Implement Edit Button & Auto-fill Form**  
+   - Add an **Edit** button to the product card.  
+   - When clicked, send the selected product’s data to an editable form.  
+   - Auto-fill the form with previous product details.  
+   - Allow users to edit and save the changes.
+
+#### **🛠️ Testing**
+- Start the backend server & frontend application.  
+- Click the **Edit** button on a product.  
+- Modify the product details and save.  
+- Verify that the data is updated in MongoDB.  
+
+✅ **Summary**  
+- Created an API endpoint to update product details in MongoDB.  
+- Added an **Edit** button to the product card.  
+
+---
+
+### **📍 Milestone 14 - Delete Product Functionality**
+### 🎯 **Learning Goals**
+- Understand how to write an API endpoint that deletes a product by its ID from MongoDB.
+
+#### **✅ Steps to Implement**
+1️⃣ **Backend - Create a Delete Endpoint**  
+   - Write an API endpoint that receives a product ID.  
+   - Deletes the corresponding product from MongoDB.  
+
+2️⃣ **Frontend - Implement Delete Button**  
+   - Add a **Delete** button to the product card.  
+   - When clicked, send the product ID to the backend endpoint.  
+
+#### **🛠️ Testing**
+- Start the backend server & frontend application.  
+- Click the **Delete** button on a product.  
+- Verify that the product is removed from MongoDB.  
+
+**Summary**  
+- Created an API endpoint to delete a product from MongoDB by ID.  
+- Added a **Delete** button to the product card.  
+
+
+
