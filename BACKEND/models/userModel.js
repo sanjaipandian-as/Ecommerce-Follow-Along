@@ -22,6 +22,25 @@ const addressSchema =mongoose.Schema({
    
 })
 
+const cartSchema = mongoose.Schema({
+
+    productId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref : "product",
+        required: true
+    },
+
+    quantity: {
+        type: Number,
+        required: true,
+        min:[1,"Quantity cannot be less than 1"],
+        default: 1,
+    },
+
+
+})
+
+
 
 
 const userSchema=mongoose.Schema({
@@ -40,10 +59,10 @@ const userSchema=mongoose.Schema({
     },
     role:{
         type:String,
-        default:"user"
+        default:["user","seller","admin"]     
     },
     Address:{
-        type: addressSchema,
+        type: addressSchema
 
     },
     createAt:{
@@ -53,8 +72,11 @@ const userSchema=mongoose.Schema({
     isActivated:{
          type:Boolean,
          default:false
-    }
+    },
+    cart: [cartSchema]
 })
+
+
 
 
 
