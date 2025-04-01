@@ -114,25 +114,25 @@ userRoute.post("/login",catchAsyncError(async (req, res, next) => {
     const { email, password } = req.body;
     console.log(email)
     if (!email || !password) {
-      return next(new Errorhadler("email and password are reqires", 400));
+      return next(new ErrorHandler("email and password are reqires", 400));
     }
 
     let user = await UserModel.findOne({ email });
 
     if (!user) {
-      return next(new Errorhadler("Please Signup", 400));
+      return next(new ErrorHandler("Please Signup", 400));
     }
 
     if(!user.isActivated){
-      return next(new Errorhadler("Please Signup", 400));
+      return next(new ErrorHandler("Please Signup", 400));
     }
 
     await bcrypt.compare(password, user.password, function(err, result) {
       if(err){
-       return  next(new Errorhadler("internal server error", 500));
+       return  next(new ErrorHandler("internal server error", 500));
       }
       if(!result){
-        return next(new Errorhadler("password is incorrect", 400));
+        return next(new ErrorHandler("password is incorrect", 400));
       }
 
       let token = jwt.sign({ id: user._id }, process.env.SECRET, {
@@ -156,13 +156,105 @@ userRoute.post("/login",catchAsyncError(async (req, res, next) => {
        
     let userId=req.user_id
     if(!userId){
-      return next(new Errorhadler("user id not found", 400));
+      return next(new ErrorHandler("user id not found", 400));
     }
     let user=await UserModel.findById(userId).select("name email role address profilePhoto");
     res.status(200).json({status:true,message:user})
   }));
 
+  userRoute.put("/add-address", auth, catchAsyncError(async (req, res, next) => {
+    console.log("hello")
+    let userId = req.user_id
+    if (!userId) {
+      return next(new ErrorHandler("user id not found", 400));
+    }
+    const { country, city, address, pincode, addressType } = req.body
+  
+    if (!country || !city || !address || !pincode || !addressType) {
+      return next(new ErrorHandler("country,city,address,pincode,addressType all feilda are required", 400));
+    }
+    let user = await UserModel.findByIdAndUpdate(userId,
+      { $push: { address: req.body } },
+      { new: true })
+    res.status(200).json({ status: true, message: user })
+  }));
+  
+  
+  userRoute.post("/order", auth, catchAsyncError(async (req, res, next) => {
+    const session = await mongoose.startSession();
+    session.startTransaction();
+    try {
+      let userId = req.user_id
+     
+      if (!userId) {
+        return next(new ErrorHandler("user id not found", 400));
+      }
+      let user =await UserModel.findById(userId)
+      let mailId = user.email
+      let userName = user.name
+      const { orderItems, shippingAddress, totalAmount } = req.body
+      if (!Array.isArray(orderItems) || orderItems.length === 0) {
+        return next(new ErrorHandler("At least one order item is required", 400));
+      }
+      for (let item of orderItems) {
+        if (!item.product || !item.quantity || !item.price) {
+          return next(new ErrorHandler("Each order item must include product, quantity, and price", 400));
+        }
+        if (item.quantity < 1) {
+          return next(new ErrorHandler("Quantity cannot be less than 1", 400));
+        }
+        if (item.price < 0) {
+          return next(new ErrorHandler("Price cannot be negative", 400));
+        }
+      }
+  
+      if (!shippingAddress ||
+        !shippingAddress.country ||
+        !shippingAddress.city ||
+        !shippingAddress.address ||
+        !shippingAddress.pincode ||
+        !shippingAddress.addressType) {
+        return next(new Errorhadler("All shipping address fields are required (country, city, address, pincode, addressType)", 400));
+      }
+  
+      if (typeof totalAmount !== "number" || totalAmount <= 0) {
+        return next(new ErrorHandler("Total amount must be a positive number", 400));
+      }
+  
+      let newOrder = new orderModel({
+        orderItems,
+        shippingAddress,
+        totalAmount,
+        user: userId,
+      });
+      console.log(mailId)
+      await newOrder.save({ session });
+      await UserModel.findByIdAndUpdate(userId, { cart: [] }, { session })
+      
+  
+      await sendMail(
+        {
+          email: mailId,
+          subject: "order placed successfully",
+          message: `Hello ${userName},your order placed successfully, `,
+        }
+      )
+      await session.commitTransaction();
+      session.endSession();
+  
+      res.status(201).json({
+        success: true,
+        message: "Order placed successfully"
+      });
+  
+    } catch (error) {
+      await session.abortTransaction();
+      session.endSession();
+      return next(new ErrorHandler(error.message, 400));
+    }
+  }));
+  
 
 
 // ✅ Export correctly (No {} destructuring)
-module.exports = userRoute;
+module.exports = {userRoute};
