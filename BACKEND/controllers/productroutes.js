@@ -5,7 +5,7 @@ const userModel = require("../models/userModel");
 
 const auth =require("../middelware/auth")
 const catchAsyncError=require("../middelware/catchAsyncError")
-const ErrorHandler = require("../utils/Errorhandler"); 
+const ErrorHandler = require("../utils/errorhadler"); 
 const {productUpload} = require("../middelware/multer")
 const path = require("path");
 
@@ -216,43 +216,6 @@ productRouter.get(
 );
 
 
-productRouter.get("/cart",auth,catchAsyncError(async(req,res,next)=>{
-     
-    let userID=req.user_id
-    if(!userID){
-      return next(new ("user id is required", 404));
-    }
-    if (!mongoose.Types.ObjectId.isValid(userID)) {
-      return next(new Errorhadler("Invalid userId", 400));
-    }
-
-    let cart=await UserModel.findById(userID).populate({
-       path:"cart.productId",
-       model:"Product"
-    })
-    
-    res.status(200).json({status:true,message:cart})
-
-}))
-
-productRouter.get("/cart",auth,catchAsyncError(async(req,res,next)=>{
-     
-    let userID=req.user_id
-    if(!userID){
-      return next(new ErrorHandler("user id is required", 404));
-    }
-    if (!mongoose.Types.ObjectId.isValid(userID)) {
-      return next(new ErrorHandler("Invalid userId", 400));
-    }
-
-    let cart=await userModel.findById(userID).populate({
-       path:"cart.productId",
-       model:"Product"
-    })
-    
-    res.status(200).json({status:true,message:cart})
-
-}))
 
 
 

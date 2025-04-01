@@ -5,7 +5,7 @@ import Navbar from "./pages/Navbar";
 import Signup from "./pages/Signup";
 import SellerProcutPage from "./pages/SellerProductPage";
 import CreateProduct from "./componants/Createproduct";
-import Nav from "./componants/Navbar";
+
 
 function app() {
   return (
