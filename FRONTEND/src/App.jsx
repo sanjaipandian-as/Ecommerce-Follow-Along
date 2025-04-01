@@ -5,6 +5,9 @@ import Navbar from "./pages/Navbar";
 import Signup from "./pages/Signup";
 import SellerProcutPage from "./pages/SellerProductPage";
 import CreateProduct from "./componants/Createproduct";
+import IndividualProduct from "./pages/IndividualProduct";
+import Cart from "./pages/Cart";
+import Profile from "./pages/Progile";
 
 
 function app() {
@@ -16,7 +19,10 @@ function app() {
             <Route path="/login" element={<Login/>}/>
             <Route path="signup" element={<Signup/>}/>
             <Route path="/Create" element={<CreateProduct/>}/>
-            <Route path="/Modify" element={<SellerProcutPage/>}/>\
+            <Route path="/Modify" element={<SellerProcutPage/>}/>
+            <Route path="/Pro" element={<IndividualProduct/>}/>
+            <Route path="/Cart" element={<Cart/>}/>
+            <Route path="" element={<Profile/>}/>
             
             
 
