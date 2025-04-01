@@ -109,5 +109,60 @@ userRoute.post("/upload", upload.single("photo"), catchAsyncError(async (req, re
     res.status(200).json({ status: true, message: "File uploaded successfully" });
 }));
 
+
+userRoute.post("/login",catchAsyncError(async (req, res, next) => {
+    const { email, password } = req.body;
+    console.log(email)
+    if (!email || !password) {
+      return next(new Errorhadler("email and password are reqires", 400));
+    }
+
+    let user = await UserModel.findOne({ email });
+
+    if (!user) {
+      return next(new Errorhadler("Please Signup", 400));
+    }
+
+    if(!user.isActivated){
+      return next(new Errorhadler("Please Signup", 400));
+    }
+
+    await bcrypt.compare(password, user.password, function(err, result) {
+      if(err){
+       return  next(new Errorhadler("internal server error", 500));
+      }
+      if(!result){
+        return next(new Errorhadler("password is incorrect", 400));
+      }
+
+      let token = jwt.sign({ id: user._id }, process.env.SECRET, {
+        expiresIn: 1000 * 60 * 60 * 60 *24,
+      });
+      res.cookie("accesstoken", token, {
+        httpOnly: true,
+        secure: false, 
+        sameSite: "lax"
+      });
+      
+
+      res.status(200).json({status:true,message:"login successful",token})
+
+      
+    });
+  }));
+
+
+  userRoute.get("/checklogin",auth,catchAsyncError(async (req, res, next) => {
+       
+    let userId=req.user_id
+    if(!userId){
+      return next(new Errorhadler("user id not found", 400));
+    }
+    let user=await UserModel.findById(userId).select("name email role address profilePhoto");
+    res.status(200).json({status:true,message:user})
+  }));
+
+
+
 // ✅ Export correctly (No {} destructuring)
 module.exports = userRoute;
