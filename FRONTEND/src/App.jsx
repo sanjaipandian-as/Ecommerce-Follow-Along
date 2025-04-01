@@ -8,6 +8,7 @@ import CreateProduct from "./componants/Createproduct";
 import IndividualProduct from "./pages/IndividualProduct";
 import Cart from "./pages/Cart";
 import Profile from "./pages/Progile";
+import Order from "./pages/Order";
 
 
 function app() {
@@ -22,7 +23,8 @@ function app() {
             <Route path="/Modify" element={<SellerProcutPage/>}/>
             <Route path="/Pro" element={<IndividualProduct/>}/>
             <Route path="/Cart" element={<Cart/>}/>
-            <Route path="" element={<Profile/>}/>
+            <Route path="/Profile" element={<Profile/>}/>
+            <Route path="/order" element={<Order/>}/>
             
             
 
