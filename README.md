@@ -1,135 +1,169 @@
 # Ecommerce-Follow-Along
 
-# Follow-along project milestone 1 Project Overview.
 
-## Backend:
+A backend-focused e-commerce application built to explore and demonstrate modern web development techniques, including RESTful APIs, database management, and authentication.
 
-+ I created backend new folder.
-
-+ Added .env files for secure passwords.
-
-+ Created a db.js file to add Mongoose files for MongoDB.
-
-+ Created middleware for user authentication.
-
-+ Downloaded and set up Express.js.
-
-+ Created the most important file, server.js, and set up an example server for the website.
-
-These tasks were explained by my mentor during the backend files overview.
-
-## Frontend:
-
-+ Created frontend files.
-
-+ Included all necessary node modules in the frontend.
-
-+ Only created the basic frontend structure at this stage.
-
-# This is what I accomplished in the Follow-Along Project Milestone #1.
+## 🚀 Features
+- *User Authentication and Authorization (JWT-based)*: Secure login and token management.
+- *Product Management (CRUD operations)*: Ability to add, update, delete, and view products.
+- *Cart and Order Management*: Users can add products to their cart and place orders.
+- *Payment Integration (Stripe/PayPal)*: Seamless payment options for processing transactions.
+- *Secure and Scalable Architecture*: Designed for performance and growth.
+- *Integrated Error Handling and Validation*: Ensures clean and reliable APIs.
+- *Database Implementation*: Uses MongoDB/MySQL for efficient data storage.
 
 
-# Follow-along project milestone 2 Project Overview.
+## 🛠 Tech Stack
+- *Backend*: Node.js, Express.js
+- *Database*: MongoDB / MySQL
+- *Authentication*: JWT (JSON Web Tokens)
+- *Payment Gateway*: Stripe / PayPal
+- *Dev Tools*: Postman, Git, Docker (optional)
 
-## Frontend:
+- 
 
-+ Created a pages folder in the src directory.
+## Milestone 2: Frontend - Login Page
 
-+ Inside the pages folder, created several files: Home.jsx, Login.jsx, and Navbar.jsx.
+In this milestone, I focused on creating the frontend for the login page. I structured the application by setting up a components folder where I created the Login.jsx component. Additionally, I organized the layout by creating a pages folder, which includes Home.jsx, Login.jsx, and Navbar.jsx components. These components work together to provide a seamless user experience, with a functional and visually clean login page for the e-commerce platform.
 
-+ Developed a login page as part of the assignment using Tailwind CSS.
 
-+ Downloaded Tailwind CSS using: 
-# npm install tailwindcss @tailwindcss/vite
+## Setup and Installation
 
-+ Added the modules in vite.config.js.
+To get started with the project locally:
 
-+ Integrated React Router for client-side routing.
+### 1. Clone the repository
 
-+ Used react-icons from the React library for adding icons.
 
-+ Installed React Icons using:
 
-# npm install react-icons
 
-+ Created a Navbar component.
+### mile stone 2
+In Milestone 2, we've moved the e-commerce application to the next level. Having completed Milestone 1, we have focused on structuring the project, setting up both the frontend and backend environments, and building the first user-facing feature – the Login Page. In this milestone, we ensure the project is structured and organized for what features will come in.
 
-+ Added navigation links to the Home and Login pages.
+Learning Goals ????
+We have for the end of this milestone
 
-+ Linked the pages in the Navbar.
+Implemented project file organisation, making sure everything is organized and in place in the project
+Set up a React frontend app to do the UI layout
+Configured a Node.js server for our backend, that will be prepared for API handling
+Integrated Tailwind CSS and used utility classes to make things easier with respect to styling classes.
+Developed a functional/styled Login page for the front end, thereby ensuring a smoothen experience for the end user.
+Feature Implemented????
+- +1.Project Folder Structure.
+frontend: Holds all files relating to React.
+backend: Has the Node.js server and subsequent API files
+- +2. Setup of React Frontend
+Activated the frontend by using React to create dynamic UIs
+Installed dependencies like React Router for routing
+- +3. Setup of Node.js Backend
+Activated a minimal Node.js server with Express for subsequent API requests
+- +4. Tailwind CSS Setup
+Activated Tailwind CSS to make styling of the applications look a lot cleaner and more modern in nature and response.
+Installed PostCSS for maximum comfort with developing using Tailwind CSS.
+- +5. Building Login Page
+Logged-in Page has been designed as the initial functionality of the e-commerce platform.
+It was made using Tailwind CSS so it has an incredibly clean design with modern style
+Basic fields included were Email, Password fields with a submit button.
+Has potential to implement new functionalities (in this case authentication).
 
-# For the Login page:
 
-+ Added a "show password" feature with an eye icon for toggling password visibility.
 
-# This is what I accomplished in the Follow-Along Project Milestone #2.
+
+
+
+
+# mile stone 3
+In Milestone 3, we have actually taken the following big step on our e-commerce application. This is the stage where we would set up a backend, make it talk with a MongoDB, and handle potential errors, as we had set up our frontend in earlier milestones. Now, this stage will ensure your application has good grounds to build on with your backend supporting any API requests made and data managing.
+
+Learning Outcomes???
+What we have for ourselves by completing this milestone include:
+
+Organized the backend code into dedicated folders for a better structure and scalability.
+Set up a Node.js server using Express to deal with API requests.
+Connected to MongoDB for managing data efficiently.
+Implemented basic error handling to smooth out server operations.
+Updated the README for our achievement in this milestone.
+Key Features Implemented????
+- +1. Backend Folder Structure
+We have set up a well-structured folder for the organization of different parts of the backend.
+routes : Different API endpoints and their routes
+controllers : Contains the business logic of the routes
+models : Defines the models used in MongoDB
+middleware : Every middleware function, including authentication and validation, goes inside this folder.
+utils : Utility folder with miscellaneous utilities utility functions in the app.
+- +2. Configuring the Server
+The Node.js server was generated by using Express and was setup to listen at a different port.
+API routes for the application in order to handle different kinds of requests types like GET, POST, PUT, DELETE
+- +3. Database Connection
+I included MongoDB to hold data such as products, users, and orders
+Connected Node.js server using Mongoose with the MongoDB database for managing information.
+Confirmed that the backend server is correctly connected with the MongoDB database.
+- +4. Error Handling
+Put in some elementary error handling which, in the event of some errors with the API calls returns meaningful messages to users and developers to debug from easily.
+
 
 
 # Milestone 4: User Model, Controller and File Uploads
 
 ## Summary
+This milestone is to create a *User Model* for ordered data, to build out the *User Controllers* for the proper CRUD operations, and finally, add in *Multer* for file uploads. The backend should now have user management with the ability to upload images.
 
-+ This milestone is to create a User Model for ordered data, to build out the User Controllers for the proper CRUD operations, and finally, add in Multer for file uploads. The backend should now have user management with the ability to upload images.
+---
+End
 
-## End
+## Features Implemented
 
-# Features Implemented
-## 1. User Model
+### 1. User Model
 
-+ Schema Fields
-+ username (String, required, unique)
-+ email (String, required, unique)
-+ password (String, required)
-+ profileImage (String, upload path of the image)
+- *Schema Fields*
+- username (String, required, unique)
+- email (String, required, unique)
+- password (String, required)
+- profileImage (String, upload path of the image)
+- createdAt & updatedAt (Timestamps)
+It makes use of Mongoose for schema validation and indexing.
 
-+ createdAt & updatedAt (Timestamps) It makes use of Mongoose for schema validation and indexing.
+### 2. User Controller
+- *Methods*:
+- createUser: It creates a new user with error checking.
+- getAllUsers: Fetch all users from the database.
+- getUserById: It fetches a single user by ID and throws an error if it is invalid.
+- updateUser: Updates user details and his profile image.
+ 
+### 3. Multer File Uploads
+- *Config*:
+- Store all uploads in the uploads/ folder
+- Only accept image/jpeg and image/png
+- Limit size to 5MB
+- *Route*: POST /users/:id/upload for profile pic upload
 
-## 2. User Controller
+-----
 
-+ Methods:
-+ createUser: It creates a new user with error checking.
-+ getAllUsers: Fetch all users from the database.
-+ getUserById: It fetches a single user by ID and throws an error if it is invalid.
-+ updateUser: Updates user details and his profile image.
+## Technical Details
 
-## 3. Multer File Uploads
+### Database
 
-## Config:
+- *MongoDB*: NoSQL. It's dynamic information a user will have.
+- *Mongoose*: Schema modeling, query building, etc.
 
-+ Store all uploads in the uploads/ folder
-+ Only accept image/jpeg and image/png
-+ Limit size to 5MB
-+ Route: POST /users/:id/upload for profile pic upload
-+ Technical Details
-+ Database
-+ MongoDB: NoSQL. It's dynamic information a user will have.
-+ Mongoose: Schema modeling, query building, etc.
-
-## Multer Setup
-
+### Multer Setup
+javascript
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, 'uploads/,
 filename: (req, file, cb) => cb(null, `${Date.now()}-${file.originalname}`)
 });
 
-const upload = multer({ storage limits: { fileSize: 5 * 1024 * 1024 }, // 5MB
 
-fileFilter: (req, file, cb) => if (file.mimetype.startsWith('image/')) cb(null, true); else cb(new Error('Only images are allowed!'), false)
+const upload = multer({
+storage
+limits: { fileSize: 5 * 1024 * 1024 }, // 5MB
+
+fileFilter: (req, file, cb) =>
+if (file.mimetype.startsWith('image/')) cb(null, true); else cb(new Error('Only images are allowed!'), false);
 
 
-# Follow-along project milestone 5 Project Overview.
+# MileStone 5
 
-
-# Signup Page Project
-
-This project is a simple signup page built using **React** and **Tailwind CSS**. The aim of this assignment is to create a user-friendly and responsive signup page that can be integrated into various web applications.
-
-## Project Description
-
-+ The signup page project is designed to provide a clean and efficient way for users to register for an application. 
-
-+ Utilizing React for component-based architecture and Tailwind CSS for rapid styling, this project ensures a smooth user experience and modern design.
-
+- +builted the Sign-Up Page: by  Creating the UI using HTML & CSS.
 
 # Milestone 6 - User Signup with Secure Data Storage
 
@@ -138,8 +172,8 @@ In this milestone, we’ve focused on implementing the backend endpoint for the 
 
 ### Features Implemented in Milestone 6:
 - *Password Encryption:* The user’s password is hashed using bcrypt before storing it in the database.
-
 - *Secure User Data Storage:* User details (name, email, etc.) are securely stored in the database, ensuring that sensitive information like passwords are never saved as plain text.
+  
 
 # Milestone 7 
 
@@ -216,84 +250,85 @@ Defined a schema for storing product details with the following fields:
 - Prevents duplicate entries (if necessary).  
 
 
-# 🛍️ E-Commerce Platform
+### Milestone 11 - Home Page with Dynamic Products  
+- Created an endpoint to fetch all products from MongoDB.  
+- Implemented a frontend function to retrieve and display product data.  
+- Dynamically rendered products using the existing Product Card component.  
 
-## 📖 Overview
-This project is a full-stack **E-Commerce Platform** built with **MongoDB, Express, React, and Node.js (MERN Stack)**. It allows users to browse, manage, and edit products dynamically.
 
----
-
-## 🚀 Milestones
-
-### **📍 Milestone 11 - Home Page with Dynamic Products**
-✅ **Backend:**
-- Created an API endpoint to fetch all products from MongoDB.
-
-✅ **Frontend:**
-- Implemented a function to retrieve and display product data.
-- Dynamically rendered products using the existing **Product Card component**.
-
----
-
-### **📍 Milestone 12 - My Products Page**
-✅ **Backend:**
-- Created an API endpoint to fetch products based on the user's email from MongoDB.
-
-✅ **Frontend:**
-- Implemented a function to retrieve and display filtered product data.
-- Dynamically rendered products using the existing **Product Card component**.
-
----
-
-### **📍 Milestone 13 - Edit Uploaded Products**
-### 🎯 **Learning Goals**
-- Understand how to write an endpoint that updates existing data in MongoDB.
-- Learn how to auto-fill a form with previous product data and provide an option to edit.
-
-#### **✅ Steps to Implement**
-1️⃣ **Backend - Create an Update Endpoint**  
-   - Write an API endpoint that receives updated product data.  
-   - Modify the existing product details inside MongoDB.  
-
-2️⃣ **Frontend - Implement Edit Button & Auto-fill Form**  
-   - Add an **Edit** button to the product card.  
-   - When clicked, send the selected product’s data to an editable form.  
-   - Auto-fill the form with previous product details.  
-   - Allow users to edit and save the changes.
-
-#### **🛠️ Testing**
-- Start the backend server & frontend application.  
-- Click the **Edit** button on a product.  
-- Modify the product details and save.  
-- Verify that the data is updated in MongoDB.  
-
-✅ **Summary**  
-- Created an API endpoint to update product details in MongoDB.  
-- Added an **Edit** button to the product card.  
-
----
-
-### **📍 Milestone 14 - Delete Product Functionality**
-### 🎯 **Learning Goals**
-- Understand how to write an API endpoint that deletes a product by its ID from MongoDB.
-
-#### **✅ Steps to Implement**
-1️⃣ **Backend - Create a Delete Endpoint**  
-   - Write an API endpoint that receives a product ID.  
-   - Deletes the corresponding product from MongoDB.  
-
-2️⃣ **Frontend - Implement Delete Button**  
-   - Add a **Delete** button to the product card.  
-   - When clicked, send the product ID to the backend endpoint.  
-
-#### **🛠️ Testing**
-- Start the backend server & frontend application.  
-- Click the **Delete** button on a product.  
-- Verify that the product is removed from MongoDB.  
-
-**Summary**  
-- Created an API endpoint to delete a product from MongoDB by ID.  
-- Added a **Delete** button to the product card.  
+### Milestone 12 - My Products Page  
+- Implemented an endpoint to fetch products based on user email from MongoDB.  
+- Created a function in the frontend to retrieve and display filtered product data.  
+- Dynamically rendered products using the existing Product Card component.  
 
 
 
+
+### Milestone 13 - Edit Uploaded Products
+Overview
++Welcome to Milestone 13! In this milestone, we will add functionality to edit uploaded products. We will implement an edit button and create a backend endpoint to update product details inside the MongoDB database.
+Learning Goals
++Understand how to write an endpoint that updates existing data in MongoDB.
++Learn how to auto-fill a form with previous product data and provide an option to edit.
+Steps for Milestone 13
++Backend - Create an Update Endpoint
+
++Write an endpoint that receives updated product data and modifies the existing data inside MongoDB.
++Frontend - Implement Edit Button & Auto-fill Form
+
++Add an edit button to the product card.
++When the edit button is clicked, send the selected product’s data to a form.
++Auto-fill the form with previous product details.
++Provide an option to edit and save the changes.
+Testing the Implementation
++Start your backend server.
++Start your frontend application.
++Navigate to a product and click the edit button.
++Modify the product details and save the changes.
++Verify that the product data is updated in MongoDB.
+Summary
++Created an API endpoint to update product details in MongoDB.
++Added an edit button to the product card.
+
+
+
+### Milestone 14 - Delete Product Functionality
+Overview
++Welcome to Milestone 14! In this milestone, we will implement the functionality to delete a product. We will add a delete button to the product card and create a backend endpoint to remove a product from MongoDB using its ID.
+Learning Goals 🎯
++Understand how to write an endpoint that deletes a product by its ID from MongoDB.
+Steps for Milestone 14
++Backend - Create a Delete Endpoint
+
++Write an endpoint that receives a product ID and deletes the corresponding product from MongoDB.
++Frontend - Implement Delete Button
+
++Add a delete button to the product card.
++When the delete button is clicked, send the product ID to the backend endpoint.
+Testing the Implementation
++Start your backend server.
++Start your frontend application.
++Click the delete button on a product.
++Verify that the product is removed from MongoDB.
+Summary
++Created an API endpoint to delete a product from MongoDB by ID.
++Added a delete button to the product card.
+
+
+## Milestone 15 
+- Created an new Nav component with links to all pages
+- Created a Navbar and made it responsive to all screen  
+
+- Created a new page that displays all product data
+
+## Milestone 16
+- Created a new page that store all product data
+
+
+## Milestone 17
+- Wrote the cart schema to store products
+- Wrote an endpoint to store receive and store product details in cart   
+
+## Milestone 18
+- Created an Backend endpoint for cart page
+- Written an endpoint to get products inside cart for user
