@@ -2,7 +2,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 
-export default function ProductCard({ _id,email, name, description, category, tags, price, stock, images ,role}) {
+function ProductCard({ _id,email, name, description, category, tags, price, stock, images ,role}) {
 
   let navigate =useNavigate()
   
@@ -56,3 +56,5 @@ export default function ProductCard({ _id,email, name, description, category, ta
     </div>
   );
 }
+
+export default ProductCard;

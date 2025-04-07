@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import AddressCard from "../components/AddressCard";
+// import AddressCard from "../components/AddressCard";
 import axios from "axios";
-import CreateAddress from "../components/CreateAddress"
+// import CreateAddress from "../components/CreateAddress"
+// import AddressCard from "../componants/AddressCard";
+import CreateAddress from "../componants/CreateAddress";
 
 export default function Profile() {
 	const [personalDetails, setPersonalDetails] = useState({

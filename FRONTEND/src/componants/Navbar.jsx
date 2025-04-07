@@ -1,15 +1,38 @@
 // src/components/NavBar.jsx
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoClose } from "react-icons/io5";
+import axios from "axios"
+import { CgProfile } from "react-icons/cg";
 
 const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
+    const [isLogin,setIsLogin]=useState(false)
+
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
+
+    useEffect(() => {
+        const fetchUser = async () => {
+          try {
+            let response = await axios.get("http://localhost:8080/user/checklogin", {
+              withCredentials: true, // Ensure cookies are sent
+            });
+      
+            if (response.status === 200) {
+              setIsLogin(true)
+              console.log(response.data);
+            }
+          } catch (error) {
+            console.log("Error fetching user:", error);
+          }
+        };
+      
+        fetchUser();
+      }, []);
 
 
     return (
@@ -72,20 +95,34 @@ const NavBar = () => {
                                     Cart
                                 </NavLink>
                             </li>
-                           
+
                         </ul>
-                        <div className="ml-auto border-2">
-                                <NavLink
-                                    to="/login"
-                                    className={({ isActive }) =>
-                                        isActive
-                                            ? "text-white font-semibold px-3 py-2 rounded-md text-sm transition-colors duration-200"
-                                            : "text-gray-200 hover:text-white px-3 py-2 rounded-md text-sm transition-colors duration-200"
-                                    }
-                                >
-                                    Login
-                                </NavLink>
-                            </div>
+                        {isLogin?<div className='ml-auto'>
+                            <NavLink
+                                to="/profile"
+                                className={({ isActive }) =>
+                                    isActive
+                                        ? "text-white font-semibold px-3 py-2 rounded-md text-sm transition-colors duration-200"
+                                        : "text-gray-200 hover:text-white px-3 py-2 rounded-md text-sm transition-colors duration-200"
+                                }
+                            >
+                             <CgProfile className="w-[35px] h-[35px]"/>  {/* profile icon*/}
+                            </NavLink>
+
+                        </div>:<div className="ml-auto">
+                            <NavLink
+                                to="/login"
+                                className={({ isActive }) =>
+                                    isActive
+                                        ? "text-white font-semibold px-3 py-2 rounded-md text-sm transition-colors duration-200"
+                                        : "text-gray-200 hover:text-white px-3 py-2 rounded-md text-sm transition-colors duration-200"
+                                }
+                            >
+                                Login
+                            </NavLink>
+                        </div>}
+                        
+                        
                     </div>
                 </div>
             </div>
@@ -136,7 +173,18 @@ const NavBar = () => {
                             </NavLink>
 
                         </li>
-                        <li >
+                        {isLogin?<li >
+                            <NavLink
+                                to="/profile"
+                                className={({ isActive }) =>
+                                    isActive
+                                        ? "text-white font-semibold px-3 py-2 rounded-md text-sm transition-colors duration-200"
+                                        : "text-gray-200 hover:text-white px-3 py-2 rounded-md text-sm transition-colors duration-200"
+                                }
+                            >
+                            <CgProfile className="w-[30px] h-[30px]"/>  {/* profile icon*/}
+                            </NavLink>
+                        </li>:<li >
                             <NavLink
                                 to="/login"
                                 className={({ isActive }) =>
@@ -147,7 +195,8 @@ const NavBar = () => {
                             >
                                 Login
                             </NavLink>
-                        </li>
+                        </li>}
+                        
                     </ul>
                 </div>
             )}

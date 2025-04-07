@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { IoIosAdd } from "react-icons/io";
 import { IoIosRemove } from "react-icons/io";
 
-export default function CartProduct({ _id,productId,quantity}) {
+function CartProduct({ _id,productId,quantity}) {
 	const name=productId.name
 	const images=productId.images
 	const price= productId.price
@@ -101,3 +101,5 @@ export default function CartProduct({ _id,productId,quantity}) {
 		</div>
 	);
 }
+
+export default CartProduct

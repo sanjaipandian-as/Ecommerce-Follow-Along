@@ -1,4 +1,4 @@
-import ProductCard from "../components/product";
+import ProductCard from "../componants/poduct";
 import { useEffect ,useState} from "react";
 import axios from "axios"
 

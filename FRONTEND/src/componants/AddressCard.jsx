@@ -1,4 +1,4 @@
-export default function AddressCard({
+function AddressCard({
 	_id,
 	country,
 	city,
@@ -71,3 +71,5 @@ export default function AddressCard({
 		</div>
 	);
 }
+
+export default AddressCard

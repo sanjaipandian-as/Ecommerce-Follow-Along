@@ -1,4 +1,5 @@
-import ProductCard from "../components/product";
+import React from "react";
+import ProductCard from "../componants/poduct";
 import { useEffect ,useState} from "react";
 import axios from "axios"
 import {useNavigate} from "react-router-dom"

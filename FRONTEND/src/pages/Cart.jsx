@@ -1,5 +1,6 @@
-import CartProduct from "../components/cartProduct"
+// import CartProduct from "../components/cartProduct"
 
+import CartProduct from '../componants/cartProduct';
 import { useState, useEffect } from 'react';
 import {useNavigate } from "react-router-dom"
 

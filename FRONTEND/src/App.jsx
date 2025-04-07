@@ -4,10 +4,11 @@ import Login from "./pages/login";
 import Navbar from "./pages/Navbar";
 import Signup from "./pages/Signup";
 import SellerProcutPage from "./pages/SellerProductPage";
+
 import CreateProduct from "./componants/Createproduct";
 import IndividualProduct from "./pages/IndividualProduct";
 import Cart from "./pages/Cart";
-import Profile from "./pages/Progile";
+import Profile from "./pages/Profile";
 import Order from "./pages/Order";
 
 
